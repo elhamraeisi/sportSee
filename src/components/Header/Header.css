@@ -18,6 +18,7 @@ header{
   justify-content:space-around;
   gap:150px;
   align-items: center;
+  padding-right: 30px;
 }
 
 .App-nav-items p{

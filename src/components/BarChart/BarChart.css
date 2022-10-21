@@ -1,0 +1,23 @@
+.bar-card {
+  background-color: #FBFBFB;
+  border-radius: 8px;
+  padding: 30px 20px 20px 20px;
+  
+  }
+
+.custom-tooltip{
+  background-color: '#E60000' !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  border: none !important;
+}
+
+.label {
+  color: white;
+  background-color: 'red';
+  padding: 10px;
+  font-size: 10px;
+  font-weight: 800;
+}

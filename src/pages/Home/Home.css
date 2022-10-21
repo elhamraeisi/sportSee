@@ -1,5 +1,5 @@
 .container {
-margin: 30px 30px 0px 110px ;
+margin: 50px 70px 0px 150px ;
 }
 
 .home-row{
@@ -8,14 +8,67 @@ margin: 30px 30px 0px 110px ;
   flex: 1;
 }
 
-.home-col-7{
-  flex: 0.7;
+.home-col-8{
+  flex: 0.8;
 }
 
-.home-col-3{
-  flex: 0.3;
+.chart-container{
+  margin-top: 40px;
+}
+.home-col-2{
+  flex: 0.2;
+  padding-left: 40px;
 }
 
 .card-design{
   padding: 10px 0px;
 }
+
+.legends {
+  font-size: 14px;
+  color: #74798C;
+  font-weight: 500;
+}
+
+.circle {
+  width: 7px;
+  height: 7px;
+  margin-right: 10px;
+  border-radius: 100%;
+  display: inline-block;
+}
+
+.circle.red {
+  background-color: #E60000;
+}
+
+.circle.black {
+  background-color: #282D30;
+}
+
+.activity-title {
+    color: #20253A;
+      font-size: 15px;
+      font-weight: 500;
+}
+
+
+.legends-container {
+  padding-bottom: 60px;
+}
+
+.card-radarChart {
+  margin: 30px 20px 0px 0px;
+  width: 320px;
+  height: 320px;
+  background-color: #282D30;
+  border-radius: 8px;
+  }
+
+  .card-radialBarChart {
+    margin: 30px 20px 0px 0px;
+    width: 320px;
+    height: 320px;
+    background-color: #FBFBFB;
+    border-radius: 8px;
+  }
