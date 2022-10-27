@@ -1,0 +1,30 @@
+.left-side{
+  background-color: #000;
+  width:80px;
+  height: calc(100vh - 65px);
+  position: absolute;
+}
+
+.icon-column{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 9rem;
+}
+
+.icon{
+  width: 50px;
+  padding: 10px;
+  
+}
+
+.copyright p{
+  padding-bottom: 7rem;
+  font-size: 12px;
+  display: block;
+  color:#fff;
+  rotate: 180deg;
+  text-orientation: mixed;
+  writing-mode: vertical-lr;
+
+}

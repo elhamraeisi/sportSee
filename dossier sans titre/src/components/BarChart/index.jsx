@@ -43,23 +43,15 @@ function CustomBarChart({ sessions }) {
           stroke="#9B9EAC"
         />
         <YAxis
-          yAxisId={"kilogram"}
           axisLine={false}
           tickLine={false}
           tickCount={3}
-          dataKey="kilogram"
           type="number"
           orientation="right"
           tickMargin={15}
           stroke="#9B9EAC"
         />
-        <YAxis
-          tick={false}
-          yAxisId={"calories"}
-          axisLine={false}
-          dataKey="calories"
-          orientation="right"
-        />
+
         <Tooltip
           allowEscapeViewBox={{
             x: true,
@@ -75,14 +67,12 @@ function CustomBarChart({ sessions }) {
           content={<CustomTooltip />}
         />
         <Bar
-          yAxisId={"kilogram"}
           dataKey="kilogram"
           barSize={10}
           radius={[50, 50, 0, 0]}
           fill="#282D30"
         />
         <Bar
-          yAxisId={"calories"}
           dataKey="calories"
           barSize={10}
           radius={[50, 50, 0, 0]}

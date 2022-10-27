@@ -11,23 +11,19 @@ import { useEffect, useState } from "react";
 
 import React from "react";
 import Error from "../Error";
-import {
-  getUserActivity,
-  getUserAverageSessions,
-  getUserData,
-  getUserPerformance,
-} from "../../api/api";
+import { getUserActivity, getUserData, getUserPerformance } from "../../api/api";
 import CustomBarChart from "../../components/BarChart";
 import CustomRadarChart from "../../components/RadarChart";
 import CustomRadialBarChart from "../../components/RadialBarChart";
-import DashedLineChart from "../../components/DashedLineChart";
+
+
 
 function Home() {
   const [userData, setUserData] = useState();
   const [userActivityData, setUserActivityData] = useState();
-  const [userAverageSessionsData, setUserAverageSessionsData] = useState();
 
   const [userPerformanceData, setUserPerformanceData] = useState();
+
 
   const { userId } = useParams();
 
@@ -40,18 +36,13 @@ function Home() {
     getUserPerformance(userId).then((data) =>
       setUserPerformanceData(data.data)
     );
-    getUserAverageSessions(userId).then((data) =>
-      setUserAverageSessionsData(data.data.sessions)
-    );
   }, []);
 
   if (userData) {
     return (
       <div className="container">
         <div className="title">
-          <h1>
-            Bonjour <span>{userData?.userInfos.firstName}</span>,
-          </h1>
+          <h1>Bonjour {userData?.userInfos.firstName},</h1>
           <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
         </div>
 
@@ -74,20 +65,11 @@ function Home() {
               </div>
 
               <div className="row">
-                <div className="card-dashedLineChart">
-                  <DashedLineChart
-                    data={userAverageSessionsData}
-                  ></DashedLineChart>
-                </div>
                 <div className="card-radarChart">
-                  <CustomRadarChart
-                    data={userPerformanceData}
-                  ></CustomRadarChart>
+                  <CustomRadarChart data={userPerformanceData}></CustomRadarChart>
                 </div>
                 <div className="card-radialBarChart">
-                  <CustomRadialBarChart
-                    data={[{ value: userData.todayScore }]}
-                  ></CustomRadialBarChart>
+                  <CustomRadialBarChart></CustomRadialBarChart>
                 </div>
               </div>
             </div>

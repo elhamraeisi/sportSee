@@ -1,0 +1,18 @@
+.row-card {
+  background-color: #FBFBFB;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+  margin: 40px 0px;
+  padding: 20px 10px;
+  }
+
+.column-card {
+  flex: 0 1;
+}
+
+.icon-card{
+  width: 70px;
+  padding: 10px 20px;
+}

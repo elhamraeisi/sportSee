@@ -1,0 +1,14 @@
+
+.row {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+.col {
+  flex: 1;
+}
+
+.col-4 {
+  flex: 0.4;
+}
+

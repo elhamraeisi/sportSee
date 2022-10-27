@@ -24,9 +24,6 @@ margin: 50px 70px 0px 150px ;
   padding: 10px 0px;
 }
 
-h1 span {
-  color: #E60000;
-}
 .legends {
   font-size: 14px;
   color: #74798C;
@@ -58,14 +55,6 @@ h1 span {
 
 .legends-container {
   padding-bottom: 60px;
-}
-
-.card-dashedLineChart {
-  margin: 30px 20px 0px 0px;
-  width: 320px;
-  height: 320px;
-  background-color: #E60000;
-  border-radius: 8px;
 }
 
 .card-radarChart {

@@ -1,80 +1,48 @@
 import "./RadarChart.css";
 import React from "react";
-import {
-  PolarAngleAxis,
-  PolarGrid,
-  Radar,
-  RadarChart,
-  Text,
-} from "recharts";
+import { PolarAngleAxis, PolarGrid, Radar, RadarChart, Text } from "recharts";
 
-const data = [
-  {
-    subject: "Math",
-    A: 120,
-    fullMark: 150,
-  },
-  {
-    subject: "Chinese",
-    A: 98,
-    fullMark: 150,
-  },
-  {
-    subject: "English",
-    A: 86,
-    fullMark: 150,
-  },
-  {
-    subject: "Geography",
-    A: 99,
-    fullMark: 150,
-  },
-  {
-    subject: "Physics",
-    A: 85,
-    fullMark: 150,
-  },
-  {
-    subject: "History",
-    A: 65,
-    fullMark: 150,
-  },
-];
-
-function renderPolarAngleAxis({ payload, x, y, cx, cy, ...rest }) {
+function renderPolarAngleAxis({ payload, x, y, cx, cy, ...props }) {
   return (
     <Text
-      {...rest}
-      fontSize={14}
+      {...props}
+      fontSize={12}
       fontWeight={600}
       verticalAnchor="middle"
-      y={y + (y - cy) / 16}
-      x={x + (x - cx) / 16}
+      y={y + (y - cy) / 32}
+      x={x + (x - cx) / 32}
     >
       {payload.value}
     </Text>
   );
 }
-function CustomRadarChart() {
+function CustomRadarChart({ data }) {
+  const formatedData = data?.data.map((object) => {
+    return {
+      value: object.value,
+      kind: data.kind[object.kind],
+    };
+  });
+
   return (
     <RadarChart
       cx={160}
       cy={160}
-      outerRadius={100}
+      outerRadius={90}
       width={320}
       height={320}
-      data={data}
+      data={formatedData}
     >
       <PolarGrid radialLines={false} />
       <PolarAngleAxis
         tick={(props) => renderPolarAngleAxis(props)}
         tickLine={false}
-        dataKey="subject"
+        dataKey="kind"
         stroke="white"
       />
       <Radar
         name="Mike"
-        dataKey="A"
+        dataKey="value"
         stroke="#E60000"
         fill="#E60000"
         fillOpacity={0.6}

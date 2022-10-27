@@ -1,16 +1,11 @@
-import {
-  USER_ACTIVITY,
-  USER_AVERAGE_SESSIONS,
-  USER_MAIN_DATA,
-  USER_PERFORMANCE,
-} from "./data";
+import { USER_ACTIVITY, USER_MAIN_DATA, USER_PERFORMANCE } from "./data";
 
 const BASE_URL = "http://localhost:3000/user/";
-const MOCKED_DATA = false;
+const MOCKED_DATA = true;
 
 export function getUserData(userId) {
   if (MOCKED_DATA) {
-    const index = USER_MAIN_DATA.findIndex((el) => el.id === Number(userId));
+    const index = USER_MAIN_DATA.findIndex(el => el.id === Number(userId))
     return new Promise((resolve) => {
       resolve({ data: USER_MAIN_DATA[index] });
     });
@@ -36,17 +31,5 @@ export function getUserPerformance(userId) {
     });
   } else {
     return fetch(BASE_URL + userId + "/performance").then((res) => res.json());
-  }
-}
-
-export function getUserAverageSessions(userId) {
-  if (MOCKED_DATA) {
-    return new Promise((resolve) => {
-      resolve({ data: USER_AVERAGE_SESSIONS[0] });
-    });
-  } else {
-    return fetch(BASE_URL + userId + "/average-sessions").then((res) =>
-      res.json()
-    );
   }
 }
