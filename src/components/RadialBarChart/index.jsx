@@ -31,20 +31,21 @@ function CustomRadialBarChart({ data }) {
         x={39}
         y={38}
         dominantBaseline="middle"
-        fontWeight={600}
-        fontSize={20}
+        fontWeight={500}
+        fontSize={15}
+        fill="#20253A"
       >
         Score
       </text>
-      <text x={125} y={160} fontWeight={700} fontSize={40} fill="#282D30">
+      <text x={135} y={150} fontWeight={700} fontSize={26} fill="#282D30">
         {data[0].value * 100 + "%"}
       </text>
 
       <text
-        x={115}
-        y={190}
+        x={130}
+        y={170}
         fontWeight={500}
-        fontSize={27}
+        fontSize={16}
         fill="#74798C"
         dominantBaseline="middle"
       >
@@ -52,10 +53,10 @@ function CustomRadialBarChart({ data }) {
       </text>
 
       <text
-        x={117}
-        y={230}
+        x={130}
+        y={195}
         fontWeight={500}
-        fontSize={27}
+        fontSize={16}
         fill="#74798C"
         dominantBaseline="middle"
       >

@@ -2,8 +2,10 @@
   background-color: #000;
   width:80px;
   height: calc(100vh - 65px);
-  position: absolute;
-}
+  position: fixed;
+  top: 0;
+  padding-top: 69px;
+  z-index: 0;}
 
 .icon-column{
   display: flex;

@@ -6,9 +6,7 @@ import {
   Line,
   XAxis,
   YAxis,
-  CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
   Rectangle,
 } from "recharts";
@@ -25,6 +23,21 @@ const CustomTooltip = ({ active, payload }) => {
 
   return null;
 };
+
+const CustomCursor = (props) => {
+  const { points } = props;
+  const { x, y } = points[0];
+  return (
+    <Rectangle
+      fill="Black"
+      fillOpacity={0.1}
+      x={x}
+      y={y - 100}
+      width={320}
+      height={420}
+    />
+  )
+}
 
 const formatLabels = (data) => {
   return data?.map((item) => {
@@ -66,6 +79,7 @@ function DashedLineChart({ data }) {
       <LineChart
         data={formatedData}
         margin={{ left: 10, right: 10, bottom: 20 }}
+
       >
         <Line
           type="monotone"
@@ -74,20 +88,23 @@ function DashedLineChart({ data }) {
           opacity={0.6}
           strokeWidth={2}
           dot={false}
+
         />
 
         <Tooltip
+          cursor={<CustomCursor />}
+          animationEasing="ease-out"
+          labelFormatter={() => ''}
+          formatter={(value) => [value + " min"]}
+          contentStyle={{ border: "none", padding: 0 }}
+          itemStyle={{
+            color: "black",
+            backgroundColor: "white",
+            padding: 12
+          }}
           wrapperStyle={{
-            background: "#FFF",
-            outline: "none",
+            outline: "none"
           }}
-          allowEscapeViewBox={true}
-          cursor={{
-            stroke: "rgba(0, 0, 0, 0.1)",
-            strokeWidth: 100,
-            strokeLinecap: "square",
-          }}
-          content={<CustomTooltip />}
         />
         <XAxis
           dataKey="day"
