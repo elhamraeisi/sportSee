@@ -1,6 +1,16 @@
 import "./Card.css";
 import React from "react";
 
+import PropTypes from "prop-types";
+
+/**
+ * Renders a card with a description, a number, and an icon.
+ * @param {*} img
+ * @param {*} number
+ * @param {*} measure
+ * @param {*} type
+ * @returns
+ */
 function Card({ img, number, measure, type }) {
   return (
     <div className="row-card ">
@@ -18,5 +28,12 @@ function Card({ img, number, measure, type }) {
     </div>
   );
 }
+
+Card.propTypes = {
+  img: PropTypes.string.isRequired,
+  number: PropTypes.number.isRequired,
+  measure: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+};
 
 export default Card;

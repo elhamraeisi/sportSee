@@ -1,6 +1,12 @@
 import "./RadialBarChart.css";
 import { RadialBarChart, RadialBar, PolarAngleAxis } from "recharts";
+import PropTypes from "prop-types";
 
+/**
+ * Renders a radial bar graph that displays the user's activity score.
+ * @param {array} data user's score
+ * @returns
+ */
 function CustomRadialBarChart({ data }) {
   return (
     <RadialBarChart
@@ -65,5 +71,13 @@ function CustomRadialBarChart({ data }) {
     </RadialBarChart>
   );
 }
+
+CustomRadialBarChart.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.number.isRequired,
+    })
+  ).isRequired,
+};
 
 export default CustomRadialBarChart;

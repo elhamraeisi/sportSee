@@ -2,9 +2,13 @@ import yoga from "../../assets/images/yoga-icon.png";
 import swiming from "../../assets/images/swiming-icon.png";
 import cycling from "../../assets/images/cycling-icon.png";
 import bodybuilding from "../../assets/images/bodybuilding-icon.png";
-import './Sidebar.css'
-import React from 'react';
+import "./Sidebar.css";
+import React from "react";
 
+/**
+ * Renders side bar menu of website
+ * @returns
+ */
 function Sidebar() {
   return (
     <nav className="left-side">
@@ -21,6 +25,5 @@ function Sidebar() {
     </nav>
   );
 }
-
 
 export default Sidebar;

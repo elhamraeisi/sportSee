@@ -1,7 +1,11 @@
 import logo from "../../assets/images/logo.png";
-import './Header.css'
-import React from 'react';
+import "./Header.css";
+import React from "react";
 
+/**
+ * Renders the header of the website
+ * @returns
+ */
 function Header() {
   return (
     <header>
@@ -17,6 +21,5 @@ function Header() {
     </header>
   );
 }
-
 
 export default Header;

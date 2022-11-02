@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import "./DashedLineChart.css";
 
 import {
@@ -10,20 +10,13 @@ import {
   ResponsiveContainer,
   Rectangle,
 } from "recharts";
-import { USER_AVERAGE_SESSIONS } from "../../api/data";
+import PropTypes from "prop-types";
 
-const CustomTooltip = ({ active, payload }) => {
-  if (active && payload && payload.length) {
-    return (
-      <div>
-        <p className="label-line-chart">{`${payload[0].value} min`}</p>
-      </div>
-    );
-  }
-
-  return null;
-};
-
+/**
+ * Creates a rectangle in the chart where the cursor is located.
+ * @param {*} props parameters to render the rectangle
+ * @returns
+ */
 const CustomCursor = (props) => {
   const { points } = props;
   const { x, y } = points[0];
@@ -36,9 +29,14 @@ const CustomCursor = (props) => {
       width={320}
       height={420}
     />
-  )
-}
+  );
+};
 
+/**
+ * This function converts day numbers to string label
+ * @param {Array} data Array of sessions ({day: Number, sessionLength: Number})
+ * @returns Formated day labels
+ */
 const formatLabels = (data) => {
   return data?.map((item) => {
     let dayLabel = "";
@@ -71,15 +69,18 @@ const formatLabels = (data) => {
     return { sessionLength: item.sessionLength, day: dayLabel };
   });
 };
-
-function DashedLineChart({ data }) {
+/**
+ * This component renders a line chart based on user's average sessions
+ * @param {Array} data Array of sessions ({day: Number, sessionLength: Number})
+ * @returns The rendered chart
+ */
+function CustomLineChart({ data }) {
   const formatedData = formatLabels(data);
   return (
     <ResponsiveContainer width="100%" height="100%">
       <LineChart
         data={formatedData}
         margin={{ left: 10, right: 10, bottom: 20 }}
-
       >
         <Line
           type="monotone"
@@ -88,22 +89,24 @@ function DashedLineChart({ data }) {
           opacity={0.6}
           strokeWidth={2}
           dot={false}
-
         />
 
         <Tooltip
           cursor={<CustomCursor />}
           animationEasing="ease-out"
-          labelFormatter={() => ''}
-          formatter={(value) => [value + " min"]}
+          labelFormatter={() => ""}
+          formatter={(value) => {
+            return [value + " min"];
+          }}
           contentStyle={{ border: "none", padding: 0 }}
+          filterNull={false}
           itemStyle={{
             color: "black",
             backgroundColor: "white",
-            padding: 12
+            padding: 12,
           }}
           wrapperStyle={{
-            outline: "none"
+            outline: "none",
           }}
         />
         <XAxis
@@ -149,4 +152,14 @@ function DashedLineChart({ data }) {
     </ResponsiveContainer>
   );
 }
-export default DashedLineChart;
+
+CustomLineChart.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      day: PropTypes.number.isRequired,
+      sessionLength: PropTypes.number.isRequired,
+    })
+  ).isRequired,
+};
+
+export default CustomLineChart;

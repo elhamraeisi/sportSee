@@ -20,7 +20,7 @@ import {
 import CustomBarChart from "../../components/BarChart";
 import CustomRadarChart from "../../components/RadarChart";
 import CustomRadialBarChart from "../../components/RadialBarChart";
-import DashedLineChart from "../../components/DashedLineChart";
+import CustomLineChart from "../../components/LineChart";
 
 function Home() {
   const [userData, setUserData] = useState();
@@ -43,6 +43,7 @@ function Home() {
     getUserAverageSessions(userId).then((data) =>
       setUserAverageSessionsData(data.data.sessions)
     );
+    // eslint-disable-next-line
   }, []);
 
   if (userData) {
@@ -69,55 +70,65 @@ function Home() {
                   Calories brûlées (kCal)
                 </div>
               </div>
-              <div className="bar-card">
-                <CustomBarChart sessions={userActivityData}></CustomBarChart>
-              </div>
+              {userAverageSessionsData && (
+                <div className="bar-card">
+                  <CustomBarChart sessions={userActivityData}></CustomBarChart>
+                </div>
+              )}
 
               <div className="row">
-                <div className="card-dashedLineChart">
-                  <DashedLineChart
-                    data={userAverageSessionsData}
-                  ></DashedLineChart>
-                </div>
-                <div className="card-radarChart">
-                  <CustomRadarChart
-                    data={userPerformanceData}
-                  ></CustomRadarChart>
-                </div>
-                <div className="card-radialBarChart">
-                  <CustomRadialBarChart
-                    data={[{ value: userData.todayScore }]}
-                  ></CustomRadialBarChart>
-                </div>
+                {userAverageSessionsData && (
+                  <div className="card-dashedLineChart">
+                    <CustomLineChart
+                      data={userAverageSessionsData}
+                    ></CustomLineChart>
+                  </div>
+                )}
+                {userPerformanceData && (
+                  <div className="card-radarChart">
+                    <CustomRadarChart
+                      data={userPerformanceData}
+                    ></CustomRadarChart>
+                  </div>
+                )}
+                {userData && (
+                  <div className="card-radialBarChart">
+                    <CustomRadialBarChart
+                      data={[{ value: userData.todayScore }]}
+                    ></CustomRadialBarChart>
+                  </div>
+                )}
               </div>
             </div>
           </div>
-          <div className="home-col-2">
-            <Card
-              img={caloriesIcon}
-              number={userData?.keyData.calorieCount}
-              type="Calories"
-              measure="kCal"
-            ></Card>
-            <Card
-              img={proteinIcon}
-              number={userData?.keyData.proteinCount}
-              type="Proteines"
-              measure="g"
-            ></Card>
-            <Card
-              img={carbsIcon}
-              number={userData?.keyData.carbohydrateCount}
-              type="Glucides"
-              measure="g"
-            ></Card>
-            <Card
-              img={fatIcon}
-              number={userData?.keyData.lipidCount}
-              type="Lipides"
-              measure="g"
-            ></Card>
-          </div>
+          {userData && (
+            <div className="home-col-2">
+              <Card
+                img={caloriesIcon}
+                number={userData?.keyData.calorieCount}
+                type="Calories"
+                measure="kCal"
+              ></Card>
+              <Card
+                img={proteinIcon}
+                number={userData?.keyData.proteinCount}
+                type="Proteines"
+                measure="g"
+              ></Card>
+              <Card
+                img={carbsIcon}
+                number={userData?.keyData.carbohydrateCount}
+                type="Glucides"
+                measure="g"
+              ></Card>
+              <Card
+                img={fatIcon}
+                number={userData?.keyData.lipidCount}
+                type="Lipides"
+                measure="g"
+              ></Card>
+            </div>
+          )}
         </div>
       </div>
     );

@@ -1,5 +1,9 @@
-import "./Error.css"
+import "./Error.css";
 
+/**
+ *Renders not found page (404)
+ * @returns
+ */
 function Error() {
   return (
     <div className="Error">

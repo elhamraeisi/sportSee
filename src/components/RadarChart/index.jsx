@@ -1,7 +1,13 @@
 import "./RadarChart.css";
 import React from "react";
 import { PolarAngleAxis, PolarGrid, Radar, RadarChart, Text } from "recharts";
+import PropTypes from "prop-types";
 
+/**
+ * Renders labels of the radar chart
+ * @param {*} props parameters for rendering the label
+ * @returns
+ */
 function renderPolarAngleAxis({ payload, x, y, cx, cy, ...props }) {
   return (
     <Text
@@ -16,6 +22,11 @@ function renderPolarAngleAxis({ payload, x, y, cx, cy, ...props }) {
     </Text>
   );
 }
+/**
+ * Renders a radar chart of user's performance
+ * @param {*} param0 user's performance data
+ * @returns
+ */
 function CustomRadarChart({ data }) {
   const formatedData = data?.data.map((object) => {
     return {
@@ -51,4 +62,16 @@ function CustomRadarChart({ data }) {
   );
 }
 
+CustomRadarChart.propTypes = {
+  data: PropTypes.shape({
+    userId: PropTypes.number.isRequired,
+    kind: PropTypes.objectOf(PropTypes.string).isRequired,
+    data: PropTypes.arrayOf(
+      PropTypes.shape({
+        value: PropTypes.number.isRequired,
+        kind: PropTypes.number.isRequired,
+      })
+    ),
+  }).isRequired,
+};
 export default CustomRadarChart;
