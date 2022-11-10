@@ -65,8 +65,8 @@ const formatLabels = (data) => {
       default:
         break;
     }
-
-    return { sessionLength: item.sessionLength, day: dayLabel };
+    const length = item.sessionLength > 0 ? item.sessionLength : "0"
+    return { sessionLength: length, day: dayLabel };
   });
 };
 /**

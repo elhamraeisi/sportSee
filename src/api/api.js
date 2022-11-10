@@ -21,8 +21,9 @@ export function getUserData(userId) {
 
 export function getUserActivity(userId) {
   if (MOCKED_DATA) {
+    const index = USER_MAIN_DATA.findIndex((el) => el.id === Number(userId));
     return new Promise((resolve) => {
-      resolve({ data: USER_ACTIVITY[0] });
+      resolve({ data: USER_ACTIVITY[index] });
     });
   } else {
     return fetch(BASE_URL + userId + "/activity").then((res) => res.json());
@@ -31,8 +32,9 @@ export function getUserActivity(userId) {
 
 export function getUserPerformance(userId) {
   if (MOCKED_DATA) {
+    const index = USER_MAIN_DATA.findIndex((el) => el.id === Number(userId));
     return new Promise((resolve) => {
-      resolve({ data: USER_PERFORMANCE[0] });
+      resolve({ data: USER_PERFORMANCE[index] });
     });
   } else {
     return fetch(BASE_URL + userId + "/performance").then((res) => res.json());
@@ -41,8 +43,9 @@ export function getUserPerformance(userId) {
 
 export function getUserAverageSessions(userId) {
   if (MOCKED_DATA) {
+    const index = USER_MAIN_DATA.findIndex((el) => el.id === Number(userId));
     return new Promise((resolve) => {
-      resolve({ data: USER_AVERAGE_SESSIONS[0] });
+      resolve({ data: USER_AVERAGE_SESSIONS[index] });
     });
   } else {
     return fetch(BASE_URL + userId + "/average-sessions").then((res) =>
